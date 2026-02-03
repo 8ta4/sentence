@@ -24,7 +24,7 @@
 
 No. The `)` motion bypasses blank lines. This keeps you moving between thoughts, instead of landing on dead space.
 
-> From Normal mode, will `vis` select anything if the cursor is on a blank line?
+> From Normal mode, can `vis` select anything if the cursor is on a blank line?
 
 Yes. Instead of selecting nothing on a blank line, `vis` selects the next sentence, if one exists.
 
