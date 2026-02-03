@@ -28,17 +28,17 @@ No. The `)` motion bypasses blank lines. This keeps you moving between thoughts,
 
 Yes. Instead of selecting nothing on a blank line, `vis` selects the next sentence, if one exists.
 
-> From Normal mode, with the cursor on a sentence, does `vas` select its trailing spaces?
+> From Normal mode, with the cursor on a sentence, does `vas` select its trailing whitespace?
 
-Yes. `as` selects the trailing spaces, so operations like `das` don't leave your text messy. `is` selects only the sentence text. This gives `is` and `as` distinct purposes, so you're not wasting keys on redundant behavior.
+Yes. `as` selects the trailing whitespace, so operations like `das` don't leave your text messy. `is` selects only the sentence text. This gives `is` and `as` distinct purposes, so you're not wasting keys on redundant behavior.
 
 > Are there cases where `sentence` does not treat a period as a sentence end?
 
 Yeah. There are a few.
 
-- The period belongs to an unambiguous abbreviation like `Mr.`, `Dr.`, `Mrs.` or `Ms.`, and there is text after it on the same line that is neither a space nor a tab.
+- The period belongs to an unambiguous abbreviation like `Mr.`, `Dr.`, `Mrs.` or `Ms.`, and there is non-whitespace text after it on the same line.
 
-- The line starts with optional indentation followed by one or more digits and a single period, and there is text after the period on the same line that is neither a space nor a tab.
+- The line starts with optional indentation followed by one or more digits and a single period, and there is non-whitespace text after the period on the same line.
 
 - The period is followed by any number of `)`, `]`, `"` or `'`.
 
