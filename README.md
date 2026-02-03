@@ -34,4 +34,8 @@ Yes. `as` selects the trailing spaces, so operations like `das` don't leave your
 
 > Does `sentence` treat the period in `Mr.` as the end of a sentence when the period isn't at the end of the line?
 
-No. `sentence` has rules to ignore the period in unambiguous abbreviations like `Mr.`, `Dr.`, `Mrs.`, and `Ms.`. This stops the plugin from splitting what is linguistically a single sentence. It avoids rules for ambiguous cases like `Jr.` because such rules could make the plugin treat two separate linguistic sentences as one. This keeps the rules simple.
+No. The plugin doesn't treat the period in unambiguous abbreviations like `Mr.`, `Dr.`, `Mrs.`, and `Ms.` as a sentence terminator when that period isn't at the end of the line. This stops the plugin from splitting what is linguistically a single sentence. It avoids rules for ambiguous cases like `Jr.` because such rules could make the plugin treat two separate linguistic sentences as one. This keeps the rules simple.
+
+> Does `sentence` treat a question mark as the end of a sentence when a space follows the question mark?
+
+Yes. The same thing goes for exclamation marks. This matches the handling of periods, except that the period in unambiguous abbreviations like `Mr.`, `Dr.`, `Mrs.`, and `Ms.` isn't treated as a sentence terminator when the period isn't at the end of the line.
