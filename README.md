@@ -32,6 +32,6 @@ Yes. Instead of selecting nothing on a blank line, `vis` selects the next senten
 
 Yes. `as` selects the trailing spaces, so operations like `das` don't leave your text messy. `is` selects only the sentence text. This gives `is` and `as` distinct purposes, so you're not wasting keys on redundant behavior.
 
-> Does `sentence` treat `Mr.` as the end of a sentence?
+> Does `sentence` treat the period in `Mr.` as the end of a sentence when the period isn't at the end of the paragraph?
 
 No. `sentence` has rules to ignore the period in unambiguous abbreviations like `Mr.`, `Dr.`, `Mrs.`, and `Ms.`. This stops the plugin from splitting what is linguistically a single sentence. It avoids rules for ambiguous cases like `Jr.` because such rules could make the plugin treat two separate linguistic sentences as one. This keeps the rules simple.
