@@ -36,7 +36,10 @@ Yes. `as` selects the trailing spaces, so operations like `das` don't leave your
 
 No. The plugin doesn't treat the period in unambiguous abbreviations like `Mr.`, `Dr.`, `Mrs.`, and `Ms.` as a sentence terminator if the period isn't the last nonspace character on its line. This stops the plugin from splitting what is linguistically a single sentence. It avoids rules for ambiguous cases like `Jr.` because such rules could make the plugin treat two separate linguistic sentences as one. This keeps the rules simple.
 
+> Does `sentence` treat the period in `1.` as the end of a sentence when the period isn't the last nonspace character on its line?
+
+No. The plugin doesn't treat the period as a sentence terminator if the line starts with optional indentation followed by one or more digits and a single period, and the period isn't the last nonspace character on its line. This stops common Markdown ordered list markers from breaking sentence boundaries.
+
 > Does `sentence` treat a question mark as the end of a sentence when a space follows the question mark?
 
 Yes. The same thing goes for exclamation marks. This matches the general handling of periods, except that periods in unambiguous abbreviations like `Mr.`, `Dr.`, `Mrs.`, and `Ms.` aren't treated as terminators if they aren't the last nonspace character on the line.
-
