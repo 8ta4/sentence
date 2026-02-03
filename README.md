@@ -32,6 +32,10 @@ Yes. Instead of selecting nothing on a blank line, `vis` selects the next senten
 
 Yes. `as` selects the trailing whitespace, so operations like `das` don't leave your text messy. `is` selects only the sentence text. This gives `is` and `as` distinct purposes, so you're not wasting keys on redundant behavior.
 
+> From Normal mode, with the cursor on a sentence, can `vas` select leading whitespace?
+
+Yeah. If there's no trailing whitespace after the sentence, `as` grabs the leading whitespace before it instead. This way, `das` doesn't leave your text messy, and `is` and `as` stay distinct.
+
 > Are there cases where `sentence` does not treat a period as a sentence end?
 
 Yeah. There are a few.
