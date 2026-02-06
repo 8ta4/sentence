@@ -53,3 +53,7 @@ Yeah. There are a few.
 Yeah. The only case is when the question mark is followed by any number of `)`, `]`, `"` or `'`.
 
 Exclamation marks are treated the same way.
+
+> Can `sentence` treat text spanning multiple lines as a single sentence?
+
+No. `sentence` treats the last non-whitespace character on the line as the end of the sentence. This plays nice with soft wrapping for prose paragraphs and makes sure unpunctuated list items stay separate.
