@@ -14,4 +14,22 @@ The goal is under 0.1 seconds.
 
 > When the cursor is on a sentence, can I programmatically get the sentence's start position?
 
-Yes. The Lua function `sentence.get()` gives you the start and end coordinates of a sentence. You pass it an integer offset to get any sentence relative to the cursor, like the previous, current, or next one. It's built to be a foundation for other plugins.
+Yes. The Lua function `sentence.get()` gives you the start and end positions of a sentence.
+
+`sentence.get({opts})`
+
+Gets the start and end positions of a sentence relative to a reference position.
+
+Parameters:
+
+`{opts}` (table?) Optional table of options with the following keys:
+
+- `buf` (integer?) Buffer handle (default: current buffer).
+
+- `pos` (table?) Reference position as `{row, col}` (default: current cursor position).
+
+- `offset` (integer?) Sentence offset relative to the reference position (default: `0`).
+
+Return:
+
+(table|nil) If a sentence is found, `{{start_row, start_col}, {end_row, end_col}}` Otherwise, `nil`.
