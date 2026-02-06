@@ -36,7 +36,7 @@ Yes. `as` selects the trailing whitespace, so operations like `das` don't leave 
 
 Yeah. If there's no trailing whitespace after the sentence, `as` grabs the leading whitespace before it instead. This way, `das` doesn't leave your text messy, and `is` and `as` stay distinct.
 
-> Are there cases where `sentence` does not treat a period as a sentence end?
+> Are there cases where `sentence` doesn't treat a period as a sentence end?
 
 Yeah. There are a few.
 
