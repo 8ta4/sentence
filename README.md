@@ -47,3 +47,9 @@ Yeah. There are a few.
 - The period is followed by any number of `)`, `]`, `"` or `'`.
 
 `sentence` avoids rules for ambiguous cases like `Jr.` because those kinds of rules could lead the plugin to treat two separate linguistic sentences as one. That way, the rules stay simple.
+
+> Are there cases where `sentence` doesn't treat a question mark as a sentence end?
+
+Yeah. The only case is when the question mark is followed by any number of `)`, `]`, `"` or `'`.
+
+Exclamation marks are treated the same way.
