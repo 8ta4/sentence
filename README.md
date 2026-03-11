@@ -13,9 +13,7 @@
 1. Add this block to your `lazy.nvim` configuration:
 
    ```lua
-   {
-     "8ta4/sentence",
-   }
+   { "8ta4/sentence" }
    ```
 
 ## Usage
