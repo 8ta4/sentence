@@ -37,6 +37,12 @@
     hello         # Run scripts directly
     git --version # Use packages
     sed "s|{{dir}}|$DEVENV_ROOT|g" template.lua > "$HOME"/.config/nvim/lua/plugins/sentence.lua
+    # https://dev.fennel-lang.org/wiki/LanguageServer#:~:text=Make%20sure%20the,fennel%2Dls/docsets/
+    mkdir -p "$HOME"/.local/share/fennel-ls/docsets/
+    if [ ! -f "$HOME"/.local/share/fennel-ls/docsets/nvim.lua ]; then
+      # https://dev.fennel-lang.org/wiki/LanguageServer#:~:text=curl%20%2Do%20%24HOME/.local/share/fennel%2Dls/docsets/nvim.lua%20https%3A//git.sr.ht/~micampe/fennel%2Dls%2Dnvim%2Ddocs/blob/main/nvim.lua
+      curl -sLo "$HOME"/.local/share/fennel-ls/docsets/nvim.lua https://git.sr.ht/~micampe/fennel-ls-nvim-docs/blob/30e1fbdf2443af7e7e5fe72171363cc4fa28f879/nvim.lua
+    fi
   '';
 
   # https://devenv.sh/tasks/
