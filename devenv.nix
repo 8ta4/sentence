@@ -9,6 +9,7 @@
 
   # https://devenv.sh/packages/
   packages = [
+    pkgs.fennel-ls
     pkgs.fnlfmt
     pkgs.git
     pkgs.gitleaks
