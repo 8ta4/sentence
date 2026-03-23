@@ -34,24 +34,16 @@ Yes. `as` selects the trailing whitespace, so operations like `das` don't leave 
 
 Yeah. If there's no trailing whitespace after the sentence, `as` grabs the leading whitespace before it instead. This way, `das` doesn't leave your text messy, and `is` and `as` stay distinct.
 
-> Are there cases where `sentence` doesn't treat a period as a sentence end?
-
-Yeah. There are a few.
-
-- The period belongs to an unambiguous abbreviation like `Mr.`, `Dr.`, `Mrs.` or `Ms.`, and there is non-whitespace text after it on the same line.
-
-- The line starts with optional indentation followed by one or more digits and a single period, and there is non-whitespace text after the period on the same line.
-
-- The period is followed by any number of `)`, `]`, `"` or `'`.
-
-`sentence` avoids rules for ambiguous cases like `Jr.` because those kinds of rules could lead the plugin to treat two separate linguistic sentences as one. That way, the rules stay simple.
-
-> Are there cases where `sentence` doesn't treat a question mark as a sentence end?
-
-Yeah. The only case is when the question mark is followed by any number of `)`, `]`, `"` or `'`.
-
-Exclamation marks are treated the same way.
-
 > Can `sentence` treat text spanning multiple lines as a single sentence?
 
-No. `sentence` treats the last non-whitespace character on the line as the end of the sentence. This plays nice with soft wrapping for prose paragraphs and makes sure unpunctuated list items stay separate.
+No. If a line contains any non-whitespace character, then the last non-whitespace character on that line is a sentence end. This plays nice with soft wrapping for prose paragraphs and makes sure unpunctuated list items stay separate.
+
+A sentence can also end earlier within the same line. A `?` or `!` is a sentence end if it is followed by an optional `)`, `]`, `"` or `'`, and then whitespace.
+
+A `.` works the same way, except in two cases.
+
+- If the `.` is part of an unambiguous abbreviation like `Mr.`, `Dr.`, `Mrs.` or `Ms.`, and non-whitespace text follows on the same line, then that `.` is not treated as a sentence end.
+
+- If the line begins with optional indentation, then one or more digits, then a `.`, and non-whitespace text follows on the same line, then that `.` is not treated as a sentence end.
+
+`sentence` avoids rules for ambiguous cases like `Jr.` because those kinds of rules could lead the plugin to treat two separate linguistic sentences as one. That way, the rules stay simple.
