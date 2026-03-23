@@ -14,7 +14,7 @@ The goal is under 0.1 seconds.
 
 > When the cursor is on a sentence, can I programmatically get the sentence's start position?
 
-Yes. The Lua function `sentence.get()` gives you the start and end positions of a sentence.
+Yes. The Lua function `sentence.get()` gives you the start and end positions of the sentence the cursor is on. When the cursor isn't on a sentence, `sentence.get()` gives you the start and end positions of the next sentence after the cursor, or `nil` if there is none.
 
 `sentence.get({opts})`
 
