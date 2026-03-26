@@ -8,6 +8,7 @@
         : last
         : map
         : mapcat
+        : merge
         : reduce} (require :nfnl.core))
 
 (fn find-all* [s pattern hits]
@@ -47,5 +48,10 @@
     (->set (if (empty? hit)
                []
                [(last hit)]))))
+
+(fn disj [set* element]
+  (let [set** (merge set*)]
+    (tset set** element nil)
+    set**))
 
 {}

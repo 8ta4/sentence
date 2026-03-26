@@ -10,6 +10,7 @@ local inc = _local_1_.inc
 local last = _local_1_.last
 local map = _local_1_.map
 local mapcat = _local_1_.mapcat
+local merge = _local_1_.merge
 local reduce = _local_1_.reduce
 local function find_all_2a(s, pattern, hits)
   local hit = {string.find(s, pattern)}
@@ -38,11 +39,11 @@ end
 local function comp(...)
   local function _8_(f, g)
     if (nil == g) then
-      _G.error("Missing argument g on fnl/core.fnl:33", 2)
+      _G.error("Missing argument g on fnl/core.fnl:34", 2)
     else
     end
     if (nil == f) then
-      _G.error("Missing argument f on fnl/core.fnl:33", 2)
+      _G.error("Missing argument f on fnl/core.fnl:34", 2)
     else
     end
     local function _11_(...)
@@ -72,5 +73,10 @@ local function find_list_item_ends(line)
     end
   end
   return __3eset(_13_())
+end
+local function disj(set_2a, element)
+  local set_2a_2a = merge(set_2a)
+  set_2a_2a[element] = nil
+  return set_2a_2a
 end
 return {}
