@@ -39,11 +39,11 @@ end
 local function comp(...)
   local function _4_(f, g)
     if (nil == g) then
-      _G.error("Missing argument g on fnl/core.fnl:32", 2)
+      _G.error("Missing argument g on fnl/core.fnl:34", 2)
     else
     end
     if (nil == f) then
-      _G.error("Missing argument f on fnl/core.fnl:32", 2)
+      _G.error("Missing argument f on fnl/core.fnl:34", 2)
     else
     end
     local function _7_(...)

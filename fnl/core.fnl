@@ -15,9 +15,11 @@
 
 (fn find-all* [s pattern hits]
   (let [hit [(string.find s pattern
-                          (if (empty? hits)
-                              0
-                              (inc (first (last hits)))))]]
+                          (if (empty? hits) 0
+                              (-> hits
+                                  last
+                                  first
+                                  inc)))]]
     (if (empty? hit)
         hits
         (find-all* s pattern (concat hits [hit])))))
