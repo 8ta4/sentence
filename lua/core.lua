@@ -53,4 +53,5 @@ end
 local function find_punctuated_ends(line)
   return map(comp(dec, last), find_all(line, "[%.%?!][%)%]\"']*%s"))
 end
+local honorifics = {"Mr%.", "Dr%.", "Mrs%.", "Ms%."}
 return {}

@@ -28,4 +28,6 @@
 (fn find-punctuated-ends [line]
   (map (comp dec last) (find-all line "[%.%?!][%)%]\"']*%s")))
 
+(local honorifics ["Mr%." "Dr%." "Mrs%." "Ms%."])
+
 {}
