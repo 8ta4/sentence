@@ -62,4 +62,15 @@ local function find_honorific_ends(line)
   end
   return __3eset(mapcat(_12_, honorifics))
 end
+local function find_list_item_ends(line)
+  local hit = {string.find(line, "^%s*%d+%.")}
+  local function _13_()
+    if empty_3f(hit) then
+      return {}
+    else
+      return {last(hit)}
+    end
+  end
+  return __3eset(_13_())
+end
 return {}

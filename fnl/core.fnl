@@ -42,4 +42,10 @@
 (fn find-honorific-ends [line]
   (->set (mapcat #(map last (find-all line $)) honorifics)))
 
+(fn find-list-item-ends [line]
+  (let [hit [(string.find line "^%s*%d+%.")]]
+    (->set (if (empty? hit)
+               []
+               [(last hit)]))))
+
 {}
