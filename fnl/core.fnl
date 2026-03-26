@@ -1,5 +1,12 @@
-(local {: concat : empty? : first : identity : inc : last : map &as core}
-       (require :nfnl.core))
+(local {: concat
+        : empty?
+        : first
+        : identity
+        : inc
+        : last
+        : map
+        : reduce
+        &as core} (require :nfnl.core))
 
 (fn find-all* [s pattern hits]
   (let [hit [(string.find s pattern)]]
@@ -19,5 +26,10 @@
 
 (fn find-line-end [line]
   (first [(string.find line "%S%s*$")]))
+
+(fn comp [...]
+  (reduce (lambda [f g]
+            (lambda [...]
+              (f (g ...)))) identity [...]))
 
 {}

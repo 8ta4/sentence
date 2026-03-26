@@ -7,6 +7,7 @@ local identity = _local_1_.identity
 local inc = _local_1_.inc
 local last = _local_1_.last
 local map = _local_1_.map
+local reduce = _local_1_.reduce
 local core = _local_1_
 local function find_all_2a(s, pattern, hits)
   local hit = {string.find(s, pattern)}
@@ -31,5 +32,22 @@ local function find_all(s, pattern)
 end
 local function find_line_end(line)
   return first({string.find(line, "%S%s*$")})
+end
+local function comp(...)
+  local function _8_(f, g)
+    if (nil == g) then
+      _G.error("Missing argument g on fnl/core.fnl:24", 2)
+    else
+    end
+    if (nil == f) then
+      _G.error("Missing argument f on fnl/core.fnl:24", 2)
+    else
+    end
+    local function _11_(...)
+      return f(g(...))
+    end
+    return _11_
+  end
+  return reduce(_8_, identity, {...})
 end
 return {}
