@@ -143,4 +143,22 @@ local function juxt(...)
   end
   return _12_
 end
+local function find_sentence_bounds(line)
+  local _18_
+  do
+    local partial_17_
+    local function _19_(_241)
+      return string.find(line, "%S", _241)
+    end
+    partial_17_ = comp(_19_, inc)
+    local function _20_(...)
+      return map(partial_17_, ...)
+    end
+    _18_ = _20_
+  end
+  local function _21_(...)
+    return cons(0, ...)
+  end
+  return apply(zip, juxt(comp(_18_, _21_, butlast), identity)(find_sentence_ends(line)))
+end
 return {}
