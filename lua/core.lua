@@ -13,6 +13,7 @@ local map = _local_1_.map
 local mapcat = _local_1_.mapcat
 local merge = _local_1_.merge
 local reduce = _local_1_.reduce
+local rest = _local_1_.rest
 local sort = _local_1_.sort
 local function snoc(xs, x)
   return concat(xs, {x})
@@ -42,11 +43,11 @@ end
 local function comp(...)
   local function _4_(f, g)
     if (nil == g) then
-      _G.error("Missing argument g on fnl/core.fnl:37", 2)
+      _G.error("Missing argument g on fnl/core.fnl:38", 2)
     else
     end
     if (nil == f) then
-      _G.error("Missing argument f on fnl/core.fnl:37", 2)
+      _G.error("Missing argument f on fnl/core.fnl:38", 2)
     else
     end
     local function _7_(...)
@@ -93,5 +94,14 @@ local function find_sentence_ends(line)
 end
 local function cons(x, xs)
   return concat({x}, xs)
+end
+local function every_3f(f, xs)
+  if empty_3f(xs) then
+    return true
+  elseif f(first(xs)) then
+    return every_3f(f, rest(xs))
+  else
+    return false
+  end
 end
 return {}

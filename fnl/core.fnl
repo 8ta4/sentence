@@ -11,6 +11,7 @@
         : mapcat
         : merge
         : reduce
+        : rest
         : sort} (require :nfnl.core))
 
 (fn snoc [xs x]
@@ -72,5 +73,10 @@
 
 (fn cons [x xs]
   (concat [x] xs))
+
+(fn every? [f xs]
+  (if (empty? xs) true
+      (f (first xs)) (tail! (every? f (rest xs)))
+      false))
 
 {}
