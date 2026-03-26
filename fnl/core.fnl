@@ -10,7 +10,8 @@
         : map
         : mapcat
         : merge
-        : reduce} (require :nfnl.core))
+        : reduce
+        : sort} (require :nfnl.core))
 
 (fn find-all* [s pattern hits]
   (let [hit [(string.find s pattern)]]
@@ -62,7 +63,9 @@
   (merge set* (->set [element])))
 
 (fn find-sentence-ends [line]
-  (conj (difference (find-punctuated-ends line) (find-honorific-ends line)
-                    (find-list-item-ends line)) (find-line-end line)))
+  (sort (keys (conj (difference (find-punctuated-ends line)
+                                (find-honorific-ends line)
+                                (find-list-item-ends line))
+                    (find-line-end line)))))
 
 {}

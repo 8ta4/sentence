@@ -13,6 +13,7 @@ local map = _local_1_.map
 local mapcat = _local_1_.mapcat
 local merge = _local_1_.merge
 local reduce = _local_1_.reduce
+local sort = _local_1_.sort
 local function find_all_2a(s, pattern, hits)
   local hit = {string.find(s, pattern)}
   if empty_3f(hit) then
@@ -40,11 +41,11 @@ end
 local function comp(...)
   local function _8_(f, g)
     if (nil == g) then
-      _G.error("Missing argument g on fnl/core.fnl:35", 2)
+      _G.error("Missing argument g on fnl/core.fnl:36", 2)
     else
     end
     if (nil == f) then
-      _G.error("Missing argument f on fnl/core.fnl:35", 2)
+      _G.error("Missing argument f on fnl/core.fnl:36", 2)
     else
     end
     local function _11_(...)
@@ -87,6 +88,6 @@ local function conj(set_2a, element)
   return merge(set_2a, __3eset({element}))
 end
 local function find_sentence_ends(line)
-  return conj(difference(find_punctuated_ends(line), find_honorific_ends(line), find_list_item_ends(line)), find_line_end(line))
+  return sort(keys(conj(difference(find_punctuated_ends(line), find_honorific_ends(line), find_list_item_ends(line)), find_line_end(line))))
 end
 return {}
