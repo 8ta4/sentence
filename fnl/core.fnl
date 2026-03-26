@@ -1,12 +1,5 @@
-(local {: concat
-        : empty?
-        : first
-        : identity
-        : inc
-        : last
-        : map
-        : reduce
-        &as core} (require :nfnl.core))
+(local {: concat : dec : empty? : first : identity : inc : last : map : reduce}
+       (require :nfnl.core))
 
 (fn find-all* [s pattern hits]
   (let [hit [(string.find s pattern)]]
@@ -31,5 +24,8 @@
   (reduce (lambda [f g]
             (lambda [...]
               (f (g ...)))) identity [...]))
+
+(fn find-punctuated-ends [line]
+  (map (comp dec last) (find-all line "[%.%?!][%)%]\"']*%s")))
 
 {}

@@ -1,6 +1,7 @@
 -- [nfnl] fnl/core.fnl
 local _local_1_ = require("nfnl.core")
 local concat = _local_1_.concat
+local dec = _local_1_.dec
 local empty_3f = _local_1_["empty?"]
 local first = _local_1_.first
 local identity = _local_1_.identity
@@ -8,7 +9,6 @@ local inc = _local_1_.inc
 local last = _local_1_.last
 local map = _local_1_.map
 local reduce = _local_1_.reduce
-local core = _local_1_
 local function find_all_2a(s, pattern, hits)
   local hit = {string.find(s, pattern)}
   if empty_3f(hit) then
@@ -49,5 +49,8 @@ local function comp(...)
     return _11_
   end
   return reduce(_8_, identity, {...})
+end
+local function find_punctuated_ends(line)
+  return map(comp(dec, last), find_all(line, "[%.%?!][%)%]\"']*%s"))
 end
 return {}
