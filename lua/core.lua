@@ -86,4 +86,7 @@ end
 local function conj(set_2a, element)
   return merge(set_2a, __3eset({element}))
 end
+local function find_sentence_ends(line)
+  return conj(difference(find_punctuated_ends(line), find_honorific_ends(line), find_list_item_ends(line)), find_line_end(line))
+end
 return {}

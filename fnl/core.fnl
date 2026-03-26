@@ -61,4 +61,8 @@
 (fn conj [set* element]
   (merge set* (->set [element])))
 
+(fn find-sentence-ends [line]
+  (conj (difference (find-punctuated-ends line) (find-honorific-ends line)
+                    (find-list-item-ends line)) (find-line-end line)))
+
 {}
