@@ -2,6 +2,7 @@
 local _local_1_ = require("nfnl.core")
 local __3eset = _local_1_["->set"]
 local concat = _local_1_.concat
+local complement = _local_1_.complement
 local dec = _local_1_.dec
 local empty_3f = _local_1_["empty?"]
 local first = _local_1_.first
@@ -43,11 +44,11 @@ end
 local function comp(...)
   local function _4_(f, g)
     if (nil == g) then
-      _G.error("Missing argument g on fnl/core.fnl:38", 2)
+      _G.error("Missing argument g on fnl/core.fnl:39", 2)
     else
     end
     if (nil == f) then
-      _G.error("Missing argument f on fnl/core.fnl:38", 2)
+      _G.error("Missing argument f on fnl/core.fnl:39", 2)
     else
     end
     local function _7_(...)
@@ -103,5 +104,15 @@ local function every_3f(f, xs)
   else
     return false
   end
+end
+local function zip_2a(xss, result)
+  if every_3f(complement(empty_3f), xss) then
+    return zip_2a(map(rest, xss), snoc(result, map(first, xss)))
+  else
+    return result
+  end
+end
+local function zip(...)
+  return zip_2a({...}, {})
 end
 return {}

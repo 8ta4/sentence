@@ -1,5 +1,6 @@
 (local {: ->set
         : concat
+        : complement
         : dec
         : empty?
         : first
@@ -78,5 +79,13 @@
   (if (empty? xs) true
       (f (first xs)) (tail! (every? f (rest xs)))
       false))
+
+(fn zip* [xss result]
+  (if (every? (complement empty?) xss)
+      (zip* (map rest xss) (snoc result (map first xss)))
+      result))
+
+(fn zip [...]
+  (zip* [...] []))
 
 {}
