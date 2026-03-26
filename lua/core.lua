@@ -8,6 +8,7 @@ local identity = _local_1_.identity
 local inc = _local_1_.inc
 local last = _local_1_.last
 local map = _local_1_.map
+local mapcat = _local_1_.mapcat
 local reduce = _local_1_.reduce
 local function find_all_2a(s, pattern, hits)
   local hit = {string.find(s, pattern)}
@@ -54,4 +55,10 @@ local function find_punctuated_ends(line)
   return map(comp(dec, last), find_all(line, "[%.%?!][%)%]\"']*%s"))
 end
 local honorifics = {"Mr%.", "Dr%.", "Mrs%.", "Ms%."}
+local function find_honorific_ends(line)
+  local function _12_(_241)
+    return map(last, find_all(line, _241))
+  end
+  return mapcat(_12_, honorifics)
+end
 return {}

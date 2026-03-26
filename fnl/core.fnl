@@ -1,5 +1,13 @@
-(local {: concat : dec : empty? : first : identity : inc : last : map : reduce}
-       (require :nfnl.core))
+(local {: concat
+        : dec
+        : empty?
+        : first
+        : identity
+        : inc
+        : last
+        : map
+        : mapcat
+        : reduce} (require :nfnl.core))
 
 (fn find-all* [s pattern hits]
   (let [hit [(string.find s pattern)]]
@@ -29,5 +37,8 @@
   (map (comp dec last) (find-all line "[%.%?!][%)%]\"']*%s")))
 
 (local honorifics ["Mr%." "Dr%." "Mrs%." "Ms%."])
+
+(fn find-honorific-ends [line]
+  (mapcat #(map last (find-all line $)) honorifics))
 
 {}
