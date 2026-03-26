@@ -77,7 +77,7 @@
 
 (fn every? [f xs]
   (if (empty? xs) true
-      (f (first xs)) (tail! (every? f (rest xs)))
+      (f (first xs)) (every? f (rest xs))
       false))
 
 (fn zip* [xss result]
