@@ -116,24 +116,28 @@ end
 local function zip(...)
   return zip_2a({...}, {})
 end
+local function apply(f, ...)
+  local args = {...}
+  return f(unpack(concat(butlast(args), last(args))))
+end
 local function juxt(...)
   local fs = {...}
   local function _12_(...)
     local xs = {...}
     if (nil == xs) then
-      _G.error("Missing argument xs on fnl/core.fnl:93", 2)
+      _G.error("Missing argument xs on fnl/core.fnl:96", 2)
     else
     end
     local function _14_(result, f)
       if (nil == f) then
-        _G.error("Missing argument f on fnl/core.fnl:94", 2)
+        _G.error("Missing argument f on fnl/core.fnl:97", 2)
       else
       end
       if (nil == result) then
-        _G.error("Missing argument result on fnl/core.fnl:94", 2)
+        _G.error("Missing argument result on fnl/core.fnl:97", 2)
       else
       end
-      return snoc(result, f(unpack(xs)))
+      return snoc(result, apply(f, xs))
     end
     return reduce(_14_, {}, fs)
   end

@@ -89,9 +89,12 @@
 (fn zip [...]
   (zip* [...] []))
 
+(fn apply [f & args]
+  (f (unpack (concat (butlast args) (last args)))))
+
 (fn juxt [& fs]
   (lambda [& xs]
     (reduce (lambda [result f]
-              (snoc result (f (unpack xs)))) [] fs)))
+              (snoc result (apply f xs))) [] fs)))
 
 {}
