@@ -1,4 +1,5 @@
-(local {: concat
+(local {: ->set
+        : concat
         : dec
         : empty?
         : first
@@ -34,11 +35,11 @@
               (f (g ...)))) identity [...]))
 
 (fn find-punctuated-ends [line]
-  (map (comp dec last) (find-all line "[%.%?!][%)%]\"']*%s")))
+  (->set (map (comp dec last) (find-all line "[%.%?!][%)%]\"']*%s"))))
 
 (local honorifics ["Mr%." "Dr%." "Mrs%." "Ms%."])
 
 (fn find-honorific-ends [line]
-  (mapcat #(map last (find-all line $)) honorifics))
+  (->set (mapcat #(map last (find-all line $)) honorifics)))
 
 {}

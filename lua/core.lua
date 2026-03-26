@@ -1,5 +1,6 @@
 -- [nfnl] fnl/core.fnl
 local _local_1_ = require("nfnl.core")
+local __3eset = _local_1_["->set"]
 local concat = _local_1_.concat
 local dec = _local_1_.dec
 local empty_3f = _local_1_["empty?"]
@@ -37,11 +38,11 @@ end
 local function comp(...)
   local function _8_(f, g)
     if (nil == g) then
-      _G.error("Missing argument g on fnl/core.fnl:24", 2)
+      _G.error("Missing argument g on fnl/core.fnl:33", 2)
     else
     end
     if (nil == f) then
-      _G.error("Missing argument f on fnl/core.fnl:24", 2)
+      _G.error("Missing argument f on fnl/core.fnl:33", 2)
     else
     end
     local function _11_(...)
@@ -52,13 +53,13 @@ local function comp(...)
   return reduce(_8_, identity, {...})
 end
 local function find_punctuated_ends(line)
-  return map(comp(dec, last), find_all(line, "[%.%?!][%)%]\"']*%s"))
+  return __3eset(map(comp(dec, last), find_all(line, "[%.%?!][%)%]\"']*%s")))
 end
 local honorifics = {"Mr%.", "Dr%.", "Mrs%.", "Ms%."}
 local function find_honorific_ends(line)
   local function _12_(_241)
     return map(last, find_all(line, _241))
   end
-  return mapcat(_12_, honorifics)
+  return __3eset(mapcat(_12_, honorifics))
 end
 return {}
