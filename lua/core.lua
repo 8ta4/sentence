@@ -150,7 +150,7 @@ local function find_sentence_bounds(line)
     local function _19_(_241)
       return string.find(line, "%S", _241)
     end
-    partial_17_ = comp(_19_, inc)
+    partial_17_ = comp(dec, _19_, inc)
     local function _20_(...)
       return map(partial_17_, ...)
     end

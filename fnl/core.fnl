@@ -98,7 +98,8 @@
               (snoc result (apply f xs))) [] fs)))
 
 (fn find-sentence-bounds [line]
-  (apply zip ((juxt (comp (partial map (comp #(string.find line "%S" $) inc))
+  (apply zip ((juxt (comp (partial map
+                                   (comp dec #(string.find line "%S" $) inc))
                           (partial cons 0) butlast)
                     identity) (find-sentence-ends line))))
 
