@@ -26,10 +26,20 @@ Parameters:
 
 - `buf` (integer?) Buffer handle (default: current buffer).
 
-- `pos` (table?) Reference position as `{row, col}` (default: current cursor position).
+- `pos` (table?) 0-based reference position as `{row, col}` (default: current cursor position).
 
 - `offset` (integer?) Sentence offset relative to the reference position (default: `0`).
 
 Return:
 
-(table|nil) If a sentence is found, `{row, start_col, end_col}`. Otherwise, `nil`.
+(table|nil) If a sentence is found, `{row, start_col, end_col}`. `row`, `start_col`, and `end_col` are 0-based. `start_col` is inclusive. `end_col` is exclusive. If no sentence is found, `nil`.
+
+This convention was chosen for a few reasons:
+
+- Most of Neovim's API uses 0-based indices and end-exclusive ranges.
+
+- It makes `sentence.get()` easier to use from other plugins that want to extract or replace sentence text, because the returned `{row, start_col, end_col}` can be passed directly to `nvim_buf_get_text()` and `nvim_buf_set_text()` without converting rows or column bounds.
+
+- With an exclusive end column, `end_col - start_col` gives the span's width.
+
+- With an exclusive end column, adjacent spans fit together cleanly because one span can end exactly where the next one starts.
