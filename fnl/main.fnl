@@ -1,3 +1,8 @@
+(local {: apply : comp : conj : cons : difference : juxt : snoc : zip}
+       (require :core))
+
+(local {: blank?} (require :nfnl.string))
+
 (local {: ->set
         : butlast
         : dec
@@ -10,9 +15,6 @@
         : map
         : mapcat
         : sort} (require :nfnl.core))
-
-(local {: apply : comp : conj : cons : difference : juxt : snoc : zip}
-       (require :core))
 
 (fn find-all* [s pattern hits]
   (let [hit [(string.find s pattern
@@ -53,9 +55,11 @@
       sort))
 
 (fn find-sentence-bounds [line]
-  (apply zip ((juxt (comp (partial map
-                                   (comp dec #(string.find line "%S" $) inc))
-                          (partial cons 0) butlast)
-                    identity) (find-sentence-ends line))))
+  (if (blank? line)
+      []
+      (apply zip ((juxt (comp (partial map
+                                       (comp dec #(string.find line "%S" $) inc))
+                              (partial cons 0) butlast)
+                        identity) (find-sentence-ends line)))))
 
 {}
