@@ -8,6 +8,19 @@
 
 > How do I set up `sentence`?
 
+1. Make sure you're using a Mac.
+
+1. Install [Homebrew](https://brew.sh/#install).
+
+1. Open a terminal.
+
+1. Run the following commands:
+
+   ```bash
+   brew install node
+   npm install -g neovim
+   ```
+
 1. Make sure you're using [`lazy.nvim`](https://github.com/folke/lazy.nvim).
 
 1. Add this block to your `lazy.nvim` configuration:
