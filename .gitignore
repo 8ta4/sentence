@@ -10,6 +10,7 @@ devenv.local.yaml
 .pre-commit-config.yaml
 
 # sentence
+.calva
 .clj-kondo
 .lsp
 rplugin
