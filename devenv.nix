@@ -18,6 +18,10 @@
 
   # https://devenv.sh/languages/
   # languages.rust.enable = true;
+  languages.javascript = {
+    enable = true;
+    npm.enable = true;
+  };
 
   # https://devenv.sh/processes/
   # processes.dev.exec = "${lib.getExe pkgs.watchexec} -n -- ls -la";
