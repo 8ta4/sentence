@@ -18,6 +18,10 @@
   [s pattern]
   (find-all* s (js/RegExp. pattern "g") []))
 
+(defn find-line-end
+  [line]
+  (.search line #"\S\s*$"))
+
 (defn main
   [plugin]
   (reset! state plugin)
