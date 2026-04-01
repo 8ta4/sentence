@@ -42,6 +42,7 @@
     hello         # Run scripts directly
     git --version # Use packages
     npm i
+    # We change the global prefix to a local directory to avoid EACCES errors when installing global packages.
     npm config set prefix .npm
     # https://github.com/neovim/node-client/blob/14391c4de7f11fde8c9b87deeb831780622d3756/README.md?plain=1#L12
     npm install -g neovim
