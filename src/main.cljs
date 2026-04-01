@@ -22,8 +22,22 @@
   [line]
   (.search line #"\S\s*$"))
 
-(defn find-punctuated-ends [line]
-  (set (map (comp dec dec last) (find-all line #"[.?!][)\]\"']*\s"))))
+(defn find-punctuated-ends
+  [line]
+  (apply sorted-set-by < (map (comp dec
+                                    dec
+                                    last)
+                              (find-all line #"[.?!][)\]\"']*\s"))))
+
+(def honorifics
+  [#"Mr\." #"Dr\." #"Mrs\." #"Ms\."])
+
+(defn find-honorific-ends
+  [line]
+  (apply sorted-set-by < (mapcat (comp (partial map (comp dec
+                                                          last))
+                                       (partial find-all line))
+                                 honorifics)))
 
 (defn main
   [plugin]
