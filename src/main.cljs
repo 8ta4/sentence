@@ -1,4 +1,6 @@
-(ns main)
+(ns main
+  (:require
+   [clojure.set :refer [difference]]))
 
 (def state
   (atom nil))
@@ -46,6 +48,13 @@
     (if hit
       #{(dec (.-lastIndex query))}
       #{})))
+
+(defn find-sentence-ends
+  [line]
+  (conj (difference (find-punctuated-ends line)
+                    (find-honorific-ends line)
+                    (find-list-item-ends line))
+        (find-line-end line)))
 
 (defn main
   [plugin]
