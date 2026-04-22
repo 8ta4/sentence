@@ -53,11 +53,11 @@ No. The `)` motion bypasses blank lines. This keeps you moving between thoughts,
 
 Yes. Instead of selecting nothing on a blank line, `vis` selects the next sentence, if one exists.
 
-> From Normal mode, with the cursor on a sentence, does `vas` select its trailing whitespace?
+> From Normal mode, with the cursor on a sentence, does `vas` select its trailing whitespace? (Planned)
 
 Yes. `as` selects the trailing whitespace, so operations like `das` don't leave your text messy. `is` selects only the sentence text. This gives `is` and `as` distinct purposes, so you're not wasting keys on redundant behavior.
 
-> From Normal mode, with the cursor on a sentence, can `vas` select leading whitespace?
+> From Normal mode, with the cursor on a sentence, can `vas` select leading whitespace? (Planned)
 
 Yeah. If there's no trailing whitespace after the sentence, `as` grabs the leading whitespace before it instead. This way, `das` doesn't leave your text messy, and `is` and `as` stay distinct.
 
