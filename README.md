@@ -27,8 +27,8 @@
        })
      end,
      dependencies = {
-      "8ta4/sentence",
-      build = "./install.sh",
+       "8ta4/sentence",
+       build = "./install.sh",
      },
    }
    ```
