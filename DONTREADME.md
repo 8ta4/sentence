@@ -41,3 +41,5 @@ This convention was chosen for a few reasons:
 - With an exclusive end column, `end_col - start_col` gives the span's width.
 
 - With an exclusive end column, adjacent spans fit together cleanly because one span can end exactly where the next one starts.
+
+- Using a `Maybe` type would just be sugarcoating the bitter `nil`.
