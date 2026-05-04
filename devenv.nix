@@ -14,17 +14,12 @@
     pkgs.nil
     pkgs.pre-commit
     pkgs.python313Packages.pre-commit-hooks
+    pkgs.rubyPackages.solargraph
   ];
 
   # https://devenv.sh/languages/
   # languages.rust.enable = true;
-  languages = {
-    clojure.enable = true;
-    javascript = {
-      enable = true;
-      npm.enable = true;
-    };
-  };
+  languages.clojure.enable = true;
 
   # https://devenv.sh/processes/
   # processes.dev.exec = "${lib.getExe pkgs.watchexec} -n -- ls -la";
@@ -47,6 +42,7 @@
     git --version # Use packages
     brew bundle
     npm i
+    export PATH="$DEVENV_ROOT/node_modules/.bin:$PATH"
     sed "s|{{dir}}|$DEVENV_ROOT|g" template.lua > "$HOME"/.config/nvim/lua/plugins/sentence.lua
   '';
 
