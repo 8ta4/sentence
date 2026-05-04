@@ -132,10 +132,11 @@
 
 (defn get*
   [args]
-  (get** (let [args* (js->clj args :keywordize-keys true)]
-           (if (zero? (count args*))
-             {}
-             (first args*)))))
+  (promesa/let [result (get** (let [args* (js->clj args :keywordize-keys true)]
+                                (if (zero? (count args*))
+                                  {}
+                                  (first args*))))]
+    (clj->js result)))
 
 (defn jump
   [sentence]
