@@ -43,7 +43,6 @@
     brew bundle
     npm i
     export PATH="$DEVENV_ROOT/node_modules/.bin:$PATH"
-    sed "s|{{dir}}|$DEVENV_ROOT|g" template.lua > "$HOME"/.config/nvim/lua/plugins/devenv.lua
   '';
 
   # https://devenv.sh/tasks/
