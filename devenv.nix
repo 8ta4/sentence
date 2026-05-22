@@ -33,7 +33,7 @@
   '';
   scripts.release.exec = "shadow-cljs release main";
   scripts.run.exec = ''
-    nvim +"lua vim.fn.Get()"
+    nvim "+lua vim.fn.Get()" README.md
   '';
 
   # https://devenv.sh/basics/
