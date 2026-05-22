@@ -22,13 +22,13 @@
 
 (defn find-line-end
   [line]
-  (inc (.search line #"\S\s*$")))
+  (inc (.search line #"[^ \t][ \t]*$")))
 
 (defn find-punctuated-ends
   [line]
   (apply sorted-set-by < (map (comp dec
                                     last)
-                              (find-all line #"[.?!][)\]\"']*\s"))))
+                              (find-all line #"[.?!][)\]\"']*[ \t]"))))
 
 (def honorifics
   [#"Mr\." #"Dr\." #"Mrs\." #"Ms\."])
@@ -41,7 +41,7 @@
 
 (defn find-list-item-ends
   [line]
-  (let [query (js/RegExp. #"^\s*\d+\." "g")]
+  (let [query (js/RegExp. #"^[ \t]*\d+\." "g")]
     (if (.exec query line)
       #{(.-lastIndex query)}
       #{})))
@@ -68,7 +68,7 @@
       (zip (->> ends
                 drop-last
                 (cons 0)
-                (map (partial search #"\S" line)))
+                (map (partial search #"[^ \t]" line)))
            ends))))
 
 (defonce state
@@ -80,6 +80,10 @@
                            last)
                      bounds)))
 
+(defn decode
+  [s]
+  (.toString (js/Buffer.from s) "latin1"))
+
 (defn find-sentence-bounds
   [row]
   (promesa/let [buffer (.-nvim.buffer @state)
@@ -88,6 +92,7 @@
     (-> lines
         js->clj
         first
+        decode
         find-sentence-bounds*)))
 
 (defn seek-forward
