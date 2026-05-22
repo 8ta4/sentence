@@ -82,6 +82,7 @@
 
 (defn decode
   [s]
+  ;; This ensures JS character-based RegExp indices match Neovim's byte-based column offsets.
   (.toString (js/Buffer.from s) "latin1"))
 
 (defn find-sentence-bounds
